@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>import test cases</title>
+  
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='case/bootstrap.min.css')}}">
+  <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+
+  <!--===============================================================================================-->
+  <script src="{{url_for('static', filename='case/jquery-3.4.1.min.js')}}"></script>
+  <script src="{{url_for('static', filename='case/socket.io.js')}}"></script>
+  
+    
+</head>
+
+<body>
+    <div class="container">
+        <p></p>
+        <div class="row clearfix">
+          <div class="col-md-12 column">
+              <form id='importcase' method=post enctype=multipart/form-data>
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <!-- project list -->
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Projects</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" name="project">
+                          <option selected>Choose project...</option>
+                            <!--{% for project in projects %}-->
+                              <!--<option >{{ project['name'] }}</option>-->
+                            <!--{% endfor %}-->
+                        </select>
+                      </div>
+                  </div>
+            
+                
+                <div class="col">
+                  <div class="input-group">
+                    <!-- 上传文件 -->
+                    <div class="custom-file">
+                      <input type="file" name="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                    </div>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Import</button>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="row clearfix">
+          <div class="col-md-12 column">
+              <table id='table' class="table table-hover">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Step</th>
+                      <th scope="col">Result</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <button type="button" class="btn btn-outline-secondary" id="showLog">Show logs</button>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+        </div> -->
+
+      </div>
+
+<!--===============================================================================================-->
+	<script src="{{url_for('static', filename='case/popper.min.js')}}"></script>
+  <script src="{{url_for('static', filename='case/bootstrap.min.js')}}"></script>
+
+</body>
+<!--===============================================================================================-->
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
+</html>

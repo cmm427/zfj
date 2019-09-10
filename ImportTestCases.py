@@ -36,9 +36,9 @@ class ImportTestCases:
 
 def main():
     module_logger.info("===============starting at {0}".format(datetime.datetime.now()))
-    user = "admin"
-    password = "admin"
-    test_case_file = r"./TestCase/Sample Excel Test Sheet.xlsx"
+    user = "cuimingming"
+    password = "cuimingming"
+    test_case_file = r"./TestCase/官网测试用例2.0.xlsx"
 
     module_logger.info("user: {0}, password: {1}".format(user, password))
 

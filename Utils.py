@@ -25,7 +25,7 @@ def log_conf():
     fh = logging.FileHandler(os.path.join(PATH("./Log"), time.strftime('%Y-%m-%d', time.localtime())+'.log'))
     fh.setLevel(logging.DEBUG)
     ch = logging.StreamHandler()
-    ch.setLevel(logging.INFO)
+    ch.setLevel(logging.WARNING)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     fh.setFormatter(formatter)
     ch.setFormatter(formatter)
