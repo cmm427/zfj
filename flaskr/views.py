@@ -67,8 +67,8 @@ def login():
             jira_service.host = request.form.get('host')[:-2]
 
         status_code = jira_service.is_login()
-        if status_code == 401:
-            error = "Invalid user"
+        if status_code == 401 or status_code == 403:
+            flash("Invalid user")
         else:
             session.clear()
             session['user'] = jira_service.user
@@ -97,8 +97,9 @@ def import_case():
             return redirect(url_for('import_case'))
         if file and allowed_file(file.filename):
             file_name = secure_filename(file.filename)
-            name = file_name.split('.')[0]
-            ext = file.filename.split('.')[1]
+            last_index = file_name.rfind('.')
+            name = file_name[:last_index]
+            ext = file_name[last_index+1:]
             saved_file = g.user + '_' + datetime.datetime.now().strftime("%Y%m%d%H%M%S") + '_' + name + '.' + ext
             file.save(os.path.join(PATH('../TestCase'), saved_file))
 
@@ -129,13 +130,11 @@ def send_cases(message):
             for i in range(len(cases)):
                 module_logger.info("case: {0}".format(cases[i]))
                 case = jira_service.generate_issue_payload(cases[i]["title"], project_id=project_id)
-                cases[i]['status'] = 1
                 emit('my_response', cases[i]['title'])
                 # issue_id = jira_service.create_issue(case)
                 for j in range(len(cases[i]["steps"])):
                     step = cases[i]["steps"][j]
                     # jira_service.add_test_step(issue_id, step)
-                    cases[i]["steps"][j]['status'] = 1
                     emit('my_response', cases[i]["steps"][j])
 
         uploaded = True
